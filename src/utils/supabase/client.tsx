@@ -7,11 +7,12 @@ export function createClient() {
   if (!supabaseInstance) {
     const supabaseUrl = `https://${projectId}.supabase.co`;
     
-    // Configure Supabase with sessionStorage for better security
-    // This ensures sessions are cleared when the browser/app is closed
+    // Configure Supabase with localStorage for persistent sessions
+    // On mobile devices, localStorage is cleared on app uninstall/reinstall
+    // Combined with inactivity timeout for additional security
     supabaseInstance = createSupabaseClient(supabaseUrl, publicAnonKey, {
       auth: {
-        storage: typeof window !== 'undefined' ? window.sessionStorage : undefined,
+        storage: typeof window !== 'undefined' ? window.localStorage : undefined,
         autoRefreshToken: true,
         persistSession: true,
         detectSessionInUrl: true,
