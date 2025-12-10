@@ -1,9 +1,0 @@
-{
-  "functions": {
-    "enabled": false,
-    "deploy": false
-  },
-  "edge_functions": {
-    "enabled": false
-  }
-}
